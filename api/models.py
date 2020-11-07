@@ -39,4 +39,13 @@ class Harvest(models.Model):
     )
 
     def __str__(self):
-        return f"Data {self.harvest_date} - {self.info}"
+        return f"Date {self.harvest_date} - {self.info}"
+
+    def get_all_info(self):
+        string = f"""
+        {self.info} occurs in {self.harvest_date}
+
+        Tree: {self.tree}
+        Gross weight: {self.gross_weight}
+        """
+        return string
