@@ -17,7 +17,7 @@ from api.models import (
 from api.serializers import (
     SpecieModelSerializer,
     TreeModelSerializer,
-    TreeGroupModelSeralizer,
+    TreeGroupModelSerializer,
     HarvestModelSeralizer
 )
 
@@ -44,12 +44,12 @@ class TreeDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class TreeGroupList(generics.ListCreateAPIView):
     queryset = TreeGroup.objects.all()
-    serializer_class = TreeGroupModelSeralizer
+    serializer_class = TreeGroupModelSerializer
 
 
 class TreeGroupDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TreeGroup.objects.all()
-    serializer_class = TreeGroupModelSeralizer
+    serializer_class = TreeGroupModelSerializer
 
 
 class HarvestList(generics.ListCreateAPIView):

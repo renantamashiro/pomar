@@ -7,7 +7,7 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-  web:
+  backend:
     build: .
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
@@ -16,3 +16,10 @@ services:
       - "8000:8000"
     depends_on:
         - db
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+    - "8080:8080"
+    volumes:
+      - .:/frontend
