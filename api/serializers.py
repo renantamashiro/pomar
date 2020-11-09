@@ -24,4 +24,4 @@ class TreeGroupModelSeralizer(serializers.ModelSerializer):
 class HarvestModelSeralizer(serializers.ModelSerializer):
     class Meta:
         model = Harvest
-        fields = ['id', 'info', 'harvest_date', 'gross_weight', 'tree']
+        fields = ['id', 'info', 'harvest_date', 'gross_weight', 'tree', 'tree_group']

@@ -13,7 +13,8 @@ class Tree(models.Model):
     age = models.IntegerField("Age")
     specie = models.ForeignKey(
         Specie,
-        on_delete=models.deletion.DO_NOTHING,
+        on_delete=models.deletion.SET_NULL,
+        null=True
     )
 
     def __str__(self):
@@ -33,9 +34,15 @@ class Harvest(models.Model):
     info = models.TextField("Informations")
     harvest_date = models.DateField()
     gross_weight = models.DecimalField("Gross weight", max_digits=8, decimal_places=2)
-    tree = models.OneToOneField(
+    tree = models.ForeignKey(
         Tree,
-        on_delete=models.deletion.DO_NOTHING
+        on_delete=models.deletion.SET_NULL,
+        null=True,
+    )
+    tree_group = models.ForeignKey(
+        TreeGroup,
+        on_delete=models.deletion.SET_NULL,
+        null=True
     )
 
     def __str__(self):
@@ -49,3 +56,4 @@ class Harvest(models.Model):
         Gross weight: {self.gross_weight}
         """
         return string
+

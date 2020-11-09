@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 
+from django_filters.rest_framework import DjangoFilterBackend
+
 from rest_framework import mixins
 from rest_framework import generics
+
 
 from api.models import (
     Specie,
@@ -52,6 +55,8 @@ class TreeGroupDetail(generics.RetrieveUpdateDestroyAPIView):
 class HarvestList(generics.ListCreateAPIView):
     queryset = Harvest.objects.all()
     serializer_class = HarvestModelSeralizer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['info', 'harvest_date', 'tree', 'tree_group']
 
 
 class HarvestDetail(generics.RetrieveUpdateDestroyAPIView):
