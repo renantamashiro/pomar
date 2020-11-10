@@ -25,7 +25,7 @@ SECRET_KEY = 'mq9#r*xcl1er3q=6m#juzb!vv*w*b5jxca1b&(x68xeh%q2e-!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

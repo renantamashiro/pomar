@@ -18,7 +18,10 @@ from api.serializers import (
     SpecieModelSerializer,
     TreeModelSerializer,
     TreeGroupModelSerializer,
-    HarvestModelSeralizer
+    HarvestModelSeralizer,
+    TreeModelSerializerCreate,
+    TreeGroupModelSerializerCreate,
+    HarvestModelSeralizerCreate
 )
 
 
@@ -37,6 +40,11 @@ class TreeList(generics.ListCreateAPIView):
     serializer_class = TreeModelSerializer
 
 
+class TreeNew(generics.ListCreateAPIView):
+    queryset = Tree.objects.all()
+    serializer_class = TreeModelSerializerCreate
+
+
 class TreeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tree.objects.all()
     serializer_class = TreeModelSerializer
@@ -45,6 +53,11 @@ class TreeDetail(generics.RetrieveUpdateDestroyAPIView):
 class TreeGroupList(generics.ListCreateAPIView):
     queryset = TreeGroup.objects.all()
     serializer_class = TreeGroupModelSerializer
+
+
+class TreeGroupNew(generics.ListCreateAPIView):
+    queryset = TreeGroup.objects.all()
+    serializer_class = TreeGroupModelSerializerCreate
 
 
 class TreeGroupDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -57,6 +70,11 @@ class HarvestList(generics.ListCreateAPIView):
     serializer_class = HarvestModelSeralizer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['info', 'harvest_date', 'tree', 'tree_group']
+
+
+class HarvestNew(generics.ListCreateAPIView):
+    queryset = Harvest.objects.all()
+    serializer_class = HarvestModelSeralizerCreate
 
 
 class HarvestDetail(generics.RetrieveUpdateDestroyAPIView):
